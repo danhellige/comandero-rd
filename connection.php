@@ -2,27 +2,20 @@
 date_default_timezone_set('America/Mexico_City');
 setlocale(LC_MONETARY, 'es_MX.UTF-8');
 
-// Cargar .env
-$env_path = __DIR__ . '/.env';
-if (file_exists($env_path)) {
-    $lines = file($env_path, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
-    foreach ($lines as $line) {
-        if (strpos($line, '#') === 0) continue; // Ignorar comentarios
-        if (strpos($line, '=') !== false) {
-            list($key, $value) = explode('=', $line, 2);
-            $_ENV[trim($key)] = trim($value);
-        }
-    }
-}
+//PARA CU
+define('LUGAR', 'CU');
 
-define('LUGAR', $_ENV['LUGAR'] ?? 'DEV');
+//PARA MED
+//define('LUGAR', 'MED');
 
-$connect = mysqli_connect(
-    $_ENV['DB_HOST'] ?? 'localhost',
-    $_ENV['DB_USER'] ?? '',
-    $_ENV['DB_PASS'] ?? '',
-    $_ENV['DB_NAME'] ?? ''
-) or die("Error de conexión");
+//Conexiones CU
+$connect = mysqli_connect("localhost", "plk-cu", "PuntoDeVenta!2025", "plk-cu01") or die("Error de conexión");
+
+//Conexion MED
+//$connect = mysqli_connect("localhost", "plk-cu", "PuntoDeVenta!2025", "plk-cu01") or die("Error de conexión");
+
+//Conexion Remota (DEV)
+//$connect = mysqli_connect("plk.cu-caja.vpn", "danhell", "WildChild82", "plk-cu01") or die("Error de conexión");
 
 // Cargar funciones
 require_once __DIR__ . '/functions_rd.php';

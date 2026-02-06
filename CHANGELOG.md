@@ -8,6 +8,11 @@ Todas las mejoras y cambios importantes del sistema de órdenes en tiempo real.
 - Productos multi-estación (estación 9) ahora visibles en BARRA y COCINA
 - Notificaciones de nuevos/cambios ahora llegan a ambas estaciones para productos multi-estación
 
+### 🎨 Improved
+- Configuración de base de datos movida a archivo `.env`
+- Agregado `.env.example` como plantilla
+- Repositorio Git inicializado para control de versiones
+
 ## [v5.2.1] - 2026-01-23
 
 ### ✨ Added

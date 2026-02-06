@@ -10,6 +10,12 @@ Sistema de comandero para Unicenta POS desarrollado para mostrar órdenes activa
 
 ## Versiones
 
+### v5.2.2: Fix Multi-estación + Git ✅ (Actual)
+- Fix: Productos estación 9 ahora visibles en BARRA y COCINA
+- Fix: Notificaciones llegan a ambas estaciones para multi-estación
+- Configuración movida a `.env` (ya no se edita connection.php)
+- Repositorio Git para control de versiones
+
 ### v5.2.0: Servicio Windows + Multi-estación ✅ (Actual)
 - Servicio Windows independiente para procesamiento cada 10 segundos (NSSM)
 - Multi-estación (estación 9) - Productos visibles en BARRA y COCINA
@@ -149,19 +155,27 @@ nssm.exe start ComanderoRD
 nssm.exe status ComanderoRD
 ```
 
-### 4. Configurar connection.php
-```php
-<?php
-date_default_timezone_set('America/Mexico_City');
-setlocale(LC_MONETARY, 'es_MX.UTF-8');
-
-define('LUGAR', 'CU');  // o 'MED'
-
-$connect = mysqli_connect("localhost", "usuario", "password", "database") or die("Error de conexión");
-
-require_once __DIR__ . '/functions_rd.php';
-?>
+### 4. Configurar .env
+Crear archivo `.env` en la raíz del proyecto (usar `.env.example` como base):
+```env
+LUGAR=CU
+DB_HOST=localhost
+DB_USER=usuario
+DB_PASS=password
+DB_NAME=database
 ```
+
+**3. Actualizar al final:**
+```markdown
+---
+**Última actualización:** 2026-02-05
+**Versión actual:** v5.2.2
+**Repositorio:** https://github.com/danhellige/comandero-rd
+**Estado:** Producción (CU y MED)
+```
+
+---
+
 
 ## URLs de Acceso
 
